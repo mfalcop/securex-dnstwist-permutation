@@ -11,19 +11,6 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "results",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
           "name": "temp-remaining",
           "type": "datatype.string",
           "is_required": false,
@@ -44,6 +31,19 @@
         },
         "unique_name": "variable_workflow_01X7TIXVZC9N47QkrmyctCqMSY7cpRK27R8",
         "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "results",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV",
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -51,7 +51,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "description": "Pending:\n* Validate if https urls are matching also",
+      "description": "From a domain list, it will permute every domain and return the registered domains with those permutations. \nThen it will investigate such domains to find any event on the local network that has seen this cousin domains. \n\nIf so, it will send an email with the domain name and details.",
       "display_name": "DNSTwist - Workflow - mfalcopa",
       "runtime_user": {
         "target_default": true
@@ -558,7 +558,7 @@
                     "base_type": "activity",
                     "properties": {
                       "action_timeout": 180,
-                      "continue_on_failure": false,
+                      "continue_on_failure": true,
                       "display_name": "Parse results",
                       "script": "t = $workflow.definition_workflow_01X72M63KSZR04Egw466CIkTijC0rSKvM01.local.variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV$\n#example = \"URL/Domain = login.com\\n\"\nt1, t2, t3,f = \"\"\nfor i in t:\n  t1 = \"What was seen?\\nURL/Domain = \"+i['observables']+\"\\nSource = \"+i['source']+\"\\n\"\n  t2 = \"Sighting type = \"+i['targets'][0]['type']+\"\\n\"\n  t3 = \"Details:\\nTime =\"+i['targets'][0]['observed_time']['start_time']+\"\\n\"\n  f = f+t1+t2+t3",
                       "script_queries": [
@@ -580,7 +580,7 @@
                     "base_type": "activity",
                     "properties": {
                       "action_timeout": 180,
-                      "body": "Hey! \n\nIn our analysis we found an potential threat using a cousing domain of your registered domains.\n\nPlease, find below the details:\n$activity.definition_activity_01YMJLGPVW7Q97PyiTg1vZYHV1CSljTuBU9.output.script_queries.final-text$\n\nGo to your secureX Threat Response and check this observable.",
+                      "body": "Hey! \n\nIn our analysis we found an potential threat using a cousing domain of your registered domains.\n\nPlease, find below the details:\nRaw data:\n$activity.definition_activity_01YMMG6AITKGR2Dr0vHwkYlJjLU6RJckr3L.output.variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx$\n\n\nGo to your secureX Threat Response and check this observable.",
                       "continue_if_one_address_valid": false,
                       "continue_on_failure": true,
                       "display_name": "Send Email Alert ",
@@ -865,19 +865,6 @@
             "schema_id": "datatype.string",
             "properties": {
               "value": "",
-              "scope": "input",
-              "name": "session-id",
-              "type": "datatype.string",
-              "is_required": true,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01X7TEJB0DY4X2SUQc4VWXUQMhOTsUceupm",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
               "scope": "output",
               "name": "dns-remaining",
               "type": "datatype.string",
@@ -885,6 +872,19 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01X7T4XH23SJS2afp7fE9aaD8nXccU32dph",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "session-id",
+              "type": "datatype.string",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01X7TEJB0DY4X2SUQc4VWXUQMhOTsUceupm",
             "object_type": "variable_workflow"
           }
         ],
@@ -1014,6 +1014,19 @@
             "object_type": "variable_workflow"
           },
           {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "results",
+              "type": "datatype.string",
+              "is_required": false,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
+            "object_type": "variable_workflow"
+          },
+          {
             "schema_id": "datatype.secure_string",
             "properties": {
               "value": "",
@@ -1037,19 +1050,6 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
-              "scope": "output",
-              "name": "results",
-              "type": "datatype.string",
-              "is_required": false,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
             "object_type": "variable_workflow"
           }
         ],
