@@ -1,0 +1,602 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM",
+    "name": "Threat Response - Observe Observables (list of observables)",
+    "title": "Threat Response - Observe Observables (list of observables)",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "results",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Token",
+          "type": "datatype.secure_string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "observables",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "[]",
+          "scope": "local",
+          "name": "sightings",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 0,
+          "scope": "local",
+          "name": "i",
+          "type": "datatype.integer",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Gets sightings, targets, relationship information. Investigates.\nInput must be in observable format:\n[{\n\"value\":\"example.com\",\n\"type\":\"url\"\n}]",
+      "display_name": "Threat Response - Observe Observables (list of observables)",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01XTRMM8JH60U0c06c6W2LoN7a5ZXVKj4O2",
+        "name": "Execute Python Script",
+        "title": "Initialize variables",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Initialize variables",
+          "script": "import math,json\n\ntam = len($workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.input.variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX$)\ntotal = math.ceil(tam/50)",
+          "script_queries": [
+            {
+              "script_query": "total",
+              "script_query_name": "total",
+              "script_query_type": "integer"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01XTRZMN5C9KK7Kyb3lJoCiKpcC850XAAdM",
+        "name": "Threat Response - Generate Access Token",
+        "title": "Threat Response - Generate Access Token",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Threat Response - Generate Access Token",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01IZMSUQSXQQ322hn1cq6jVmgbzS6X1NXEa",
+            "target_type": "web-service.endpoint"
+          },
+          "workflow_id": "definition_workflow_01PP75S3LTBW4420OZU3rdHWKHFnE6aC7yH",
+          "workflow_name": "Threat Response - Generate Access Token"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01XTS3QII1D6P3t80hWu146eCjMi838REuY",
+        "name": "Set Variables",
+        "title": "Save Authorization Token Locally",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Save Authorization Token Locally",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW$",
+              "variable_value_new": "$activity.definition_activity_01XTRZMN5C9KK7Kyb3lJoCiKpcC850XAAdM.output.variable_workflow_01PP75S3G7CJY6WAQr2IJC7qga2SIoE09gQ$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01XTRN4I7NCHW3TPiyyjPAh9Jk2L5TdRHXl",
+        "name": "While Loop",
+        "title": "While there is still observables to analyse",
+        "type": "logic.while",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "While there is still observables to analyse",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01XTRN4IE4MMQ3j0fIcDUJPtx3HKXFBvNdo",
+            "name": "Condition Branch",
+            "title": "are domains left to observe?",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$",
+                "operator": "lt",
+                "right_operand": "$activity.definition_activity_01XTRMM8JH60U0c06c6W2LoN7a5ZXVKj4O2.output.script_queries.total$"
+              },
+              "continue_on_failure": false,
+              "display_name": "are domains left to observe?",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01XTRNMH729442FO1YxkpUHhHOaRqYCgAa1",
+                "name": "Execute Python Script",
+                "title": "Divide in chunks of 50 elements",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "description": "the /observe works better with up to 50 observables",
+                  "display_name": "Divide in chunks of 50 elements",
+                  "script": "import json\n\ntemp = $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.input.variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX$\ni = $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$\ntotal = $activity.definition_activity_01XTRMM8JH60U0c06c6W2LoN7a5ZXVKj4O2.output.script_queries.total$\n\nif i == total-1:\n  current1 = temp[50*i:]\nelse:\n  current1 = temp[50*i:50*(i+1)]\n\ncurrent = json.dumps(current1)\nprint(len(current))",
+                  "script_queries": [
+                    {
+                      "script_query": "current",
+                      "script_query_name": "current",
+                      "script_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w",
+                "name": "HTTP Request",
+                "title": "Observe Observables",
+                "type": "web-service.http_request",
+                "base_type": "activity",
+                "properties": {
+                  "accept": "application/json",
+                  "action_timeout": 180,
+                  "allow_auto_redirect": true,
+                  "allow_headers_redirect": false,
+                  "body": "$activity.definition_activity_01XTRNMH729442FO1YxkpUHhHOaRqYCgAa1.output.script_queries.current$",
+                  "content_type": "application/json",
+                  "continue_on_error_status_code": false,
+                  "continue_on_failure": true,
+                  "custom_headers": [
+                    {
+                      "name": "Authorization",
+                      "value": "Bearer $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW$"
+                    }
+                  ],
+                  "description": "POST to Observe the chunk of observables",
+                  "display_name": "Observe Observables",
+                  "method": "POST",
+                  "relative_url": "/iroh-enrich/observe/observables",
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": true,
+                    "target_id": "definition_target_01JR2Z682Y2J95D0LYQ5j0irprtyvwEMZtj"
+                  }
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01XTS62C4MB923Pv1lfjQldlry4ScMNRVdU",
+                "name": "Condition Block",
+                "title": "Was it successfull?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Was it successfull?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01XTS62CAUOAU06L1C1KpA0CT9NingQofXu",
+                    "name": "Condition Branch",
+                    "title": "Successful",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                        "operator": "eq",
+                        "right_operand": 200
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Successful",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD",
+                        "name": "JSONPath Query",
+                        "title": "JSONPath Query",
+                        "type": "corejava.jsonpathquery",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": true,
+                          "display_name": "JSONPath Query",
+                          "input_json": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.response_body$",
+                          "jsonpath_queries": [
+                            {
+                              "jsonpath_query": "$.data[*].data.sightings.docs[*].[?(@.targets)].targets",
+                              "jsonpath_query_name": "targets",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.data[*].data.sightings.docs[*].[?(@.targets)].observables",
+                              "jsonpath_query_name": "observables",
+                              "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.data[*].data.sightings.docs[*].[?(@.targets)].source",
+                              "jsonpath_query_name": "source",
+                              "jsonpath_query_type": "string"
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01Y4Q5RSQAZS74mqH4tNG8e8lAzDdufTEGx",
+                        "name": "Condition Block",
+                        "title": "Are there any targets in this chunk?",
+                        "type": "logic.if_else",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Are there any targets in this chunk?",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity",
+                        "blocks": [
+                          {
+                            "unique_name": "definition_activity_01Y4Q5RT3Q1QW4Jd36szNAhQuuRIKi8OWKR",
+                            "name": "Condition Branch",
+                            "title": "Yes",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.error.code$",
+                                "operator": "ne",
+                                "right_operand": "400"
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "Yes",
+                              "skip_execution": false
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_01Y4QCSMC5Q5W4oOiOaCy6beB8sK11sqfKf",
+                                "name": "Execute Python Script",
+                                "title": "Set Variable Sigthings",
+                                "type": "python3.script",
+                                "base_type": "activity",
+                                "properties": {
+                                  "action_timeout": 180,
+                                  "continue_on_failure": false,
+                                  "description": "Need to remove duplicates",
+                                  "display_name": "Set Variable Sigthings",
+                                  "script": "import json\n\nobs = $activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.jsonpath_queries.observables$\ntargs = $activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.jsonpath_queries.targets$\nsrcs = $activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.jsonpath_queries.source$\nsights = $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT$\nfor i in range(0,len(obs)):\n  nc = {'observables': obs[i],'source': srcs[i],'targets': targs[i]}\n  sights.append(nc)\n",
+                                  "script_queries": [
+                                    {
+                                      "script_query": "sights",
+                                      "script_query_name": "sights",
+                                      "script_query_type": "string"
+                                    }
+                                  ],
+                                  "skip_execution": false
+                                },
+                                "object_type": "definition_activity"
+                              },
+                              {
+                                "unique_name": "definition_activity_01XTWUMQWOSYO0vrrxScUBG99jyPz7gZraZ",
+                                "name": "Set Variables",
+                                "title": "Set Variables",
+                                "type": "core.set_multiple_variables",
+                                "base_type": "activity",
+                                "properties": {
+                                  "continue_on_failure": false,
+                                  "display_name": "Set Variables",
+                                  "skip_execution": false,
+                                  "variables_to_update": [
+                                    {
+                                      "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT$",
+                                      "variable_value_new": "$activity.definition_activity_01Y4QCSMC5Q5W4oOiOaCy6beB8sK11sqfKf.output.script_queries.sights$"
+                                    }
+                                  ]
+                                },
+                                "object_type": "definition_activity"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "unique_name": "definition_activity_01XTRW047LD6F0SrPUNvRLjFMN9OhIvk5h3",
+                        "name": "Set Variables",
+                        "title": "Increase i",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Increase i",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$",
+                              "variable_value_new": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$+1"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  },
+                  {
+                    "unique_name": "definition_activity_01XTS62CGA6BW57aDoTRlEIj5WA1dHw4gJm",
+                    "name": "Condition Branch",
+                    "title": "Token expired",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                        "operator": "eq",
+                        "right_operand": 401
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Token expired",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01XTX4HMFF0FB3w6vaWocltouf6EFJje9Eu",
+                        "name": "Threat Response - Generate Access Token again",
+                        "title": "Threat Response - Generate Access Token again",
+                        "type": "workflow.atomic_workflow",
+                        "base_type": "subworkflow",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Threat Response - Generate Access Token again",
+                          "runtime_user": {
+                            "target_default": true
+                          },
+                          "skip_execution": false,
+                          "target": {
+                            "override_workflow_target": true,
+                            "target_id": "definition_target_01IZMSUQSXQQ322hn1cq6jVmgbzS6X1NXEa",
+                            "target_type": "web-service.endpoint"
+                          },
+                          "workflow_id": "definition_workflow_01PP75S3LTBW4420OZU3rdHWKHFnE6aC7yH",
+                          "workflow_name": "Threat Response - Generate Access Token"
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01XTX4TS64TVC086ygPyiaLTpu40QiB1NGE",
+                        "name": "Set Variables",
+                        "title": "Save Authorization Token Locally",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "description": "Then retry chunk",
+                          "display_name": "Save Authorization Token Locally",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW$",
+                              "variable_value_new": "$activity.definition_activity_01XTX4HMFF0FB3w6vaWocltouf6EFJje9Eu.output.variable_workflow_01PP75S3G7CJY6WAQr2IJC7qga2SIoE09gQ$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  },
+                  {
+                    "unique_name": "definition_activity_01XTS7FOBKRGJ41zfGs8RrLnHwLrlJvudge",
+                    "name": "Condition Branch",
+                    "title": "Anything else",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": {
+                          "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                          "operator": "ne",
+                          "right_operand": 401
+                        },
+                        "operator": "or",
+                        "right_operand": {
+                          "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                          "operator": "ne",
+                          "right_operand": 200
+                        }
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Anything else",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01XTX5PX4S7O876hLhzBrEgyBD1JLHsf6o3",
+                        "name": "Completed",
+                        "title": "Failed",
+                        "type": "logic.completed",
+                        "base_type": "activity",
+                        "properties": {
+                          "completion_type": "failed-completed",
+                          "continue_on_failure": false,
+                          "display_name": "Failed",
+                          "result_message": "We could not complete the web request for this observables. Error: $activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.error.code$ -  $activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.error.message$",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01YI81BIB3A8I6lfoxmHLCmPWOzH0e7VeMr",
+        "name": "Set Variables",
+        "title": "Set final results",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set final results",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.output.variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx$",
+              "variable_value_new": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01IZMSUQSXQQ322hn1cq6jVmgbzS6X1NXEa": {
+      "unique_name": "definition_target_01IZMSUQSXQQ322hn1cq6jVmgbzS6X1NXEa",
+      "name": "CTR_For_Access_Token",
+      "title": "CTR Target for access token",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01IZMSTPVMBTB0EukhkCzHTn1tiFjMx6iZl",
+        "description": "CTR_For_Access_Token",
+        "disable_certificate_validation": false,
+        "display_name": "CTR_For_Access_Token",
+        "host": "visibility.eu.amp.cisco.com",
+        "no_runtime_user": false,
+        "path": "/iroh",
+        "protocol": "https"
+      }
+    },
+    "definition_target_01JR2Z682Y2J95D0LYQ5j0irprtyvwEMZtj": {
+      "unique_name": "definition_target_01JR2Z682Y2J95D0LYQ5j0irprtyvwEMZtj",
+      "name": "CTR_API",
+      "title": "CTR API Target",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "Target used to invoke iroh endpoints",
+        "disable_certificate_validation": false,
+        "display_name": "CTR_API",
+        "host": "visibility.eu.amp.cisco.com",
+        "no_runtime_user": true,
+        "path": "/iroh",
+        "protocol": "https"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01IZMSTPVMBTB0EukhkCzHTn1tiFjMx6iZl": {
+      "unique_name": "definition_runtime_user_01IZMSTPVMBTB0EukhkCzHTn1tiFjMx6iZl",
+      "name": "CTR_Credentials",
+      "title": "CTR_Credentials",
+      "description": "Account Key for CTR",
+      "type": "runtime_user.web-service_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "auth_option": "Basic",
+        "basic_password": "*****",
+        "basic_username": "client-259ad4b9-b1be-4d6f-a1f3-b66d74e25841",
+        "display_name": "CTR_Credentials"
+      }
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_01PP75S3LTBW4420OZU3rdHWKHFnE6aC7yH"
+  ],
+  "dependent_workflows": [
+    "definition_workflow_01PP75S3LTBW4420OZU3rdHWKHFnE6aC7yH"
+  ]
+}
