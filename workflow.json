@@ -11,19 +11,6 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "results",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
           "name": "temp-remaining",
           "type": "datatype.string",
           "is_required": false,
@@ -44,6 +31,19 @@
         },
         "unique_name": "variable_workflow_01X7TIXVZC9N47QkrmyctCqMSY7cpRK27R8",
         "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "results",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV",
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -51,7 +51,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "description": "Pending:\n* Need to remove from the permutations the legitimate domains (DONE)\n* Need to add Observe Observables Workflow and measure running time\n* Validate if https is matching also",
+      "description": "Pending:\n* Validate if https urls are matching also",
       "display_name": "DNSTwist - Workflow - mfalcopa",
       "runtime_user": {
         "target_default": true
@@ -865,19 +865,6 @@
             "schema_id": "datatype.string",
             "properties": {
               "value": "",
-              "scope": "input",
-              "name": "session-id",
-              "type": "datatype.string",
-              "is_required": true,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01X7TEJB0DY4X2SUQc4VWXUQMhOTsUceupm",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
               "scope": "output",
               "name": "dns-remaining",
               "type": "datatype.string",
@@ -885,6 +872,19 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01X7T4XH23SJS2afp7fE9aaD8nXccU32dph",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "session-id",
+              "type": "datatype.string",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01X7TEJB0DY4X2SUQc4VWXUQMhOTsUceupm",
             "object_type": "variable_workflow"
           }
         ],
@@ -988,16 +988,16 @@
         "base_type": "workflow",
         "variables": [
           {
-            "schema_id": "datatype.integer",
+            "schema_id": "datatype.string",
             "properties": {
-              "value": 0,
-              "scope": "local",
-              "name": "i",
-              "type": "datatype.integer",
+              "value": "",
+              "scope": "output",
+              "name": "results",
+              "type": "datatype.string",
               "is_required": false,
               "is_invisible": false
             },
-            "unique_name": "variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV",
+            "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
             "object_type": "variable_workflow"
           },
           {
@@ -1014,16 +1014,29 @@
             "object_type": "variable_workflow"
           },
           {
-            "schema_id": "datatype.string",
+            "schema_id": "datatype.integer",
             "properties": {
-              "value": "",
-              "scope": "output",
-              "name": "results",
-              "type": "datatype.string",
+              "value": 0,
+              "scope": "local",
+              "name": "i",
+              "type": "datatype.integer",
               "is_required": false,
               "is_invisible": false
             },
-            "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
+            "unique_name": "variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "observables",
+              "type": "datatype.string",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX",
             "object_type": "variable_workflow"
           },
           {
@@ -1037,19 +1050,6 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "[{\"value\": \"http://santandera.com\", \"type\": \"url\"}, {\"value\": \"santandera.com\", \"type\": \"domain\"}, {\"value\": \"http://santandere.com\", \"type\": \"url\"}, {\"value\": \"santandere.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderm.com\", \"type\": \"url\"}, {\"value\": \"santanderm.com\", \"type\": \"domain\"}, {\"value\": \"http://santandero.com\", \"type\": \"url\"}, {\"value\": \"santandero.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderr.com\", \"type\": \"url\"}, {\"value\": \"santanderr.com\", \"type\": \"domain\"}, {\"value\": \"http://santanders.com\", \"type\": \"url\"}, {\"value\": \"santanders.com\", \"type\": \"domain\"}, {\"value\": \"http://santandert.com\", \"type\": \"url\"}, {\"value\": \"santandert.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderu.com\", \"type\": \"url\"}, {\"value\": \"santanderu.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderx.com\", \"type\": \"url\"}, {\"value\": \"santanderx.com\", \"type\": \"domain\"}, {\"value\": \"http://saltander.com\", \"type\": \"url\"}, {\"value\": \"saltander.com\", \"type\": \"domain\"}, {\"value\": \"http://sandander.com\", \"type\": \"url\"}, {\"value\": \"sandander.com\", \"type\": \"domain\"}, {\"value\": \"http://santandar.com\", \"type\": \"url\"}, {\"value\": \"santandar.com\", \"type\": \"domain\"}, {\"value\": \"http://santanddr.com\", \"type\": \"url\"}, {\"value\": \"santanddr.com\", \"type\": \"domain\"}, {\"value\": \"http://santandes.com\", \"type\": \"url\"}, {\"value\": \"santandes.com\", \"type\": \"domain\"}, {\"value\": \"http://santanter.com\", \"type\": \"url\"}, {\"value\": \"santanter.com\", \"type\": \"domain\"}, {\"value\": \"http://santender.com\", \"type\": \"url\"}, {\"value\": \"santender.com\", \"type\": \"domain\"}, {\"value\": \"http://santinder.com\", \"type\": \"url\"}, {\"value\": \"santinder.com\", \"type\": \"domain\"}, {\"value\": \"http://saotander.com\", \"type\": \"url\"}, {\"value\": \"saotander.com\", \"type\": \"domain\"}, {\"value\": \"http://sentander.com\", \"type\": \"url\"}, {\"value\": \"sentander.com\", \"type\": \"domain\"}, {\"value\": \"http://authsantander.com\", \"type\": \"url\"}, {\"value\": \"authsantander.com\", \"type\": \"domain\"}, {\"value\": \"http://infosantander.com\", \"type\": \"url\"}, {\"value\": \"infosantander.com\", \"type\": \"domain\"}, {\"value\": \"http://loginsantander.com\", \"type\": \"url\"}, {\"value\": \"loginsantander.com\", \"type\": \"domain\"}, {\"value\": \"http://mysantander.com\", \"type\": \"url\"}, {\"value\": \"mysantander.com\", \"type\": \"domain\"}, {\"value\": \"http://online-santander.com\", \"type\": \"url\"}, {\"value\": \"online-santander.com\", \"type\": \"domain\"}, {\"value\": \"http://onlinesantander.com\", \"type\": \"url\"}, {\"value\": \"onlinesantander.com\", \"type\": \"domain\"}, {\"value\": \"http://portal-santander.com\", \"type\": \"url\"}, {\"value\": \"portal-santander.com\", \"type\": \"domain\"}, {\"value\": \"http://santander-auth.com\", \"type\": \"url\"}, {\"value\": \"santander-auth.com\", \"type\": \"domain\"}, {\"value\": \"http://santander-info.com\", \"type\": \"url\"}, {\"value\": \"santander-info.com\", \"type\": \"domain\"}, {\"value\": \"http://santander-support.com\", \"type\": \"url\"}, {\"value\": \"santander-support.com\", \"type\": \"domain\"}, {\"value\": \"http://santander-web.com\", \"type\": \"url\"}, {\"value\": \"santander-web.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderconnect.com\", \"type\": \"url\"}, {\"value\": \"santanderconnect.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderlogin.com\", \"type\": \"url\"}, {\"value\": \"santanderlogin.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderonline.com\", \"type\": \"url\"}, {\"value\": \"santanderonline.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderpayment.com\", \"type\": \"url\"}, {\"value\": \"santanderpayment.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderportal.com\", \"type\": \"url\"}, {\"value\": \"santanderportal.com\", \"type\": \"domain\"}, {\"value\": \"http://santandersafe.com\", \"type\": \"url\"}, {\"value\": \"santandersafe.com\", \"type\": \"domain\"}, {\"value\": \"http://santanderweb.com\", \"type\": \"url\"}, {\"value\": \"santanderweb.com\", \"type\": \"domain\"}, {\"value\": \"http://securesantander.com\", \"type\": \"url\"}, {\"value\": \"securesantander.com\", \"type\": \"domain\"}, {\"value\": \"http://support-santander.com\", \"type\": \"url\"}, {\"value\": \"support-santander.com\", \"type\": \"domain\"}, {\"value\": \"http://websantander.com\", \"type\": \"url\"}, {\"value\": \"websantander.com\", \"type\": \"domain\"}, {\"value\": \"http://www-santander.com\", \"type\": \"url\"}, {\"value\": \"www-santander.com\", \"type\": \"domain\"}, {\"value\": \"http://wwwsantander.com\", \"type\": \"url\"}, {\"value\": \"wwwsantander.com\", \"type\": \"domain\"}, {\"value\": \"http://samtander.com\", \"type\": \"url\"}, {\"value\": \"samtander.com\", \"type\": \"domain\"}, {\"value\": \"http://sanntander.com\", \"type\": \"url\"}, {\"value\": \"sanntander.com\", \"type\": \"domain\"}, {\"value\": \"http://santamder.com\", \"type\": \"url\"}, {\"value\": \"santamder.com\", \"type\": \"domain\"}, {\"value\": \"http://santandcr.com\", \"type\": \"url\"}, {\"value\": \"santandcr.com\", \"type\": \"domain\"}, {\"value\": \"http://santandier.com\", \"type\": \"url\"}, {\"value\": \"santandier.com\", \"type\": \"domain\"}, {\"value\": \"http://santannder.com\", \"type\": \"url\"}, {\"value\": \"santannder.com\", \"type\": \"domain\"}, {\"value\": \"http://santarder.com\", \"type\": \"url\"}, {\"value\": \"santarder.com\", \"type\": \"domain\"}, {\"value\": \"http://sartander.com\", \"type\": \"url\"}, {\"value\": \"sartander.com\", \"type\": \"domain\"}, {\"value\": \"http://xn--sntndr-ptac8e.com\", \"type\": \"url\"}, {\"value\": \"xn--sntndr-ptac8e.com\", \"type\": \"domain\"}, {\"value\": \"http://xn--sntndr-ptac9d.com\", \"type\": \"url\"}, {\"value\": \"xn--sntndr-ptac9d.com\", \"type\": \"domain\"}, {\"value\": \"http://san-tander.com\", \"type\": \"url\"}, {\"value\": \"san-tander.com\", \"type\": \"domain\"}, {\"value\": \"http://sant-ander.com\", \"type\": \"url\"}, {\"value\": \"sant-ander.com\", \"type\": \"domain\"}, {\"value\": \"http://sanrtander.com\", \"type\": \"url\"}, {\"value\": \"sanrtander.com\", \"type\": \"domain\"}, {\"value\": \"http://sant1ander.com\", \"type\": \"url\"}, {\"value\": \"sant1ander.com\", \"type\": \"domain\"}, {\"value\": \"http://sant2ander.com\", \"type\": \"url\"}, {\"value\": \"sant2ander.com\", \"type\": \"domain\"}, {\"value\": \"http://sant5ander.com\", \"type\": \"url\"}, {\"value\": \"sant5ander.com\", \"type\": \"domain\"}, {\"value\": \"http://santamnder.com\", \"type\": \"url\"}, {\"value\": \"santamnder.com\", \"type\": \"domain\"}, {\"value\": \"http://santandder.com\", \"type\": \"url\"}, {\"value\": \"santandder.com\", \"type\": \"domain\"}, {\"value\": \"http://santandeer.com\", \"type\": \"url\"}, {\"value\": \"santandeer.com\", \"type\": \"domain\"}, {\"value\": \"http://santaneder.com\", \"type\": \"url\"}, {\"value\": \"santaneder.com\", \"type\": \"domain\"}, {\"value\": \"http://santanrder.com\", \"type\": \"url\"}, {\"value\": \"santanrder.com\", \"type\": \"domain\"}, {\"value\": \"http://santansder.com\", \"type\": \"url\"}, {\"value\": \"santansder.com\", \"type\": \"domain\"}, {\"value\": \"http://santasnder.com\", \"type\": \"url\"}, {\"value\": \"santasnder.com\", \"type\": \"domain\"}, {\"value\": \"http://santaynder.com\", \"type\": \"url\"}, {\"value\": \"santaynder.com\", \"type\": \"domain\"}, {\"value\": \"http://santfander.com\", \"type\": \"url\"}, {\"value\": \"santfander.com\", \"type\": \"domain\"}, {\"value\": \"http://santzander.com\", \"type\": \"url\"}, {\"value\": \"santzander.com\", \"type\": \"domain\"}, {\"value\": \"http://ssantander.com\", \"type\": \"url\"}, {\"value\": \"ssantander.com\", \"type\": \"domain\"}, {\"value\": \"http://antander.com\", \"type\": \"url\"}, {\"value\": \"antander.com\", \"type\": \"domain\"}, {\"value\": \"http://sanander.com\", \"type\": \"url\"}, {\"value\": \"sanander.com\", \"type\": \"domain\"}, {\"value\": \"http://santader.com\", \"type\": \"url\"}, {\"value\": \"santader.com\", \"type\": \"domain\"}, {\"value\": \"http://santande.com\", \"type\": \"url\"}, {\"value\": \"santande.com\", \"type\": \"domain\"}, {\"value\": \"http://santandr.com\", \"type\": \"url\"}, {\"value\": \"santandr.com\", \"type\": \"domain\"}, {\"value\": \"http://santaner.com\", \"type\": \"url\"}, {\"value\": \"santaner.com\", \"type\": \"domain\"}, {\"value\": \"http://santnder.com\", \"type\": \"url\"}, {\"value\": \"santnder.com\", \"type\": \"domain\"}, {\"value\": \"http://satander.com\", \"type\": \"url\"}, {\"value\": \"satander.com\", \"type\": \"domain\"}, {\"value\": \"http://sntander.com\", \"type\": \"url\"}, {\"value\": \"sntander.com\", \"type\": \"domain\"}, {\"value\": \"http://saantander.com\", \"type\": \"url\"}, {\"value\": \"saantander.com\", \"type\": \"domain\"}, {\"value\": \"http://santaander.com\", \"type\": \"url\"}, {\"value\": \"santaander.com\", \"type\": \"domain\"}, {\"value\": \"http://santtander.com\", \"type\": \"url\"}, {\"value\": \"santtander.com\", \"type\": \"domain\"}, {\"value\": \"http://dantander.com\", \"type\": \"url\"}, {\"value\": \"dantander.com\", \"type\": \"domain\"}, {\"value\": \"http://sahtander.com\", \"type\": \"url\"}, {\"value\": \"sahtander.com\", \"type\": \"domain\"}, {\"value\": \"http://san5ander.com\", \"type\": \"url\"}, {\"value\": \"san5ander.com\", \"type\": \"domain\"}, {\"value\": \"http://sanfander.com\", \"type\": \"url\"}, {\"value\": \"sanfander.com\", \"type\": \"domain\"}, {\"value\": \"http://sangander.com\", \"type\": \"url\"}, {\"value\": \"sangander.com\", \"type\": \"domain\"}, {\"value\": \"http://sanrander.com\", \"type\": \"url\"}, {\"value\": \"sanrander.com\", \"type\": \"domain\"}, {\"value\": \"http://sant2nder.com\", \"type\": \"url\"}, {\"value\": \"sant2nder.com\", \"type\": \"domain\"}, {\"value\": \"http://santabder.com\", \"type\": \"url\"}, {\"value\": \"santabder.com\", \"type\": \"domain\"}, {\"value\": \"http://santandee.com\", \"type\": \"url\"}, {\"value\": \"santandee.com\", \"type\": \"domain\"}, {\"value\": \"http://santandet.com\", \"type\": \"url\"}, {\"value\": \"santandet.com\", \"type\": \"domain\"}, {\"value\": \"http://santandrr.com\", \"type\": \"url\"}, {\"value\": \"santandrr.com\", \"type\": \"domain\"}, {\"value\": \"http://santandwr.com\", \"type\": \"url\"}, {\"value\": \"santandwr.com\", \"type\": \"domain\"}, {\"value\": \"http://santanser.com\", \"type\": \"url\"}, {\"value\": \"santanser.com\", \"type\": \"domain\"}, {\"value\": \"http://sanzander.com\", \"type\": \"url\"}, {\"value\": \"sanzander.com\", \"type\": \"domain\"}, {\"value\": \"http://ssntander.com\", \"type\": \"url\"}, {\"value\": \"ssntander.com\", \"type\": \"domain\"}, {\"value\": \"http://s.antander.com\", \"type\": \"url\"}, {\"value\": \"s.antander.com\", \"type\": \"domain\"}, {\"value\": \"http://sa.ntander.com\", \"type\": \"url\"}, {\"value\": \"sa.ntander.com\", \"type\": \"domain\"}, {\"value\": \"http://sant.ander.com\", \"type\": \"url\"}, {\"value\": \"sant.ander.com\", \"type\": \"domain\"}, {\"value\": \"http://santa.nder.com\", \"type\": \"url\"}, {\"value\": \"santa.nder.com\", \"type\": \"domain\"}, {\"value\": \"http://santander.app\", \"type\": \"url\"}, {\"value\": \"santander.app\", \"type\": \"domain\"}, {\"value\": \"http://santander.biz\", \"type\": \"url\"}, {\"value\": \"santander.biz\", \"type\": \"domain\"}, {\"value\": \"http://santander.de\", \"type\": \"url\"}, {\"value\": \"santander.de\", \"type\": \"domain\"}, {\"value\": \"http://santander.eu\", \"type\": \"url\"}, {\"value\": \"santander.eu\", \"type\": \"domain\"}, {\"value\": \"http://santander.ga\", \"type\": \"url\"}, {\"value\": \"santander.ga\", \"type\": \"domain\"}, {\"value\": \"http://santander.info\", \"type\": \"url\"}, {\"value\": \"santander.info\", \"type\": \"domain\"}, {\"value\": \"http://santander.net\", \"type\": \"url\"}, {\"value\": \"santander.net\", \"type\": \"domain\"}, {\"value\": \"http://santander.online\", \"type\": \"url\"}, {\"value\": \"santander.online\", \"type\": \"domain\"}, {\"value\": \"http://santander.org\", \"type\": \"url\"}, {\"value\": \"santander.org\", \"type\": \"domain\"}, {\"value\": \"http://santander.pw\", \"type\": \"url\"}, {\"value\": \"santander.pw\", \"type\": \"domain\"}, {\"value\": \"http://santander.uk\", \"type\": \"url\"}, {\"value\": \"santander.uk\", \"type\": \"domain\"}, {\"value\": \"http://santander.xyz\", \"type\": \"url\"}, {\"value\": \"santander.xyz\", \"type\": \"domain\"}, {\"value\": \"http://sanatnder.com\", \"type\": \"url\"}, {\"value\": \"sanatnder.com\", \"type\": \"domain\"}, {\"value\": \"http://santadner.com\", \"type\": \"url\"}, {\"value\": \"santadner.com\", \"type\": \"domain\"}, {\"value\": \"http://santandre.com\", \"type\": \"url\"}, {\"value\": \"santandre.com\", \"type\": \"domain\"}, {\"value\": \"http://santnader.com\", \"type\": \"url\"}, {\"value\": \"santnader.com\", \"type\": \"domain\"}, {\"value\": \"http://satnander.com\", \"type\": \"url\"}, {\"value\": \"satnander.com\", \"type\": \"domain\"}, {\"value\": \"http://snatander.com\", \"type\": \"url\"}, {\"value\": \"snatander.com\", \"type\": \"domain\"}, {\"value\": \"http://santandercom.com\", \"type\": \"url\"}, {\"value\": \"santandercom.com\", \"type\": \"domain\"}, {\"value\": \"http://santandir.com\", \"type\": \"url\"}, {\"value\": \"santandir.com\", \"type\": \"domain\"}, {\"value\": \"http://santandor.com\", \"type\": \"url\"}, {\"value\": \"santandor.com\", \"type\": \"domain\"}, {\"value\": \"http://sontander.com\", \"type\": \"url\"}, {\"value\": \"sontander.com\", \"type\": \"domain\"}, {\"value\": \"http://suntander.com\", \"type\": \"url\"}, {\"value\": \"suntander.com\", \"type\": \"domain\"}]",
-              "scope": "input",
-              "name": "observables",
-              "type": "datatype.string",
-              "is_required": true,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX",
             "object_type": "variable_workflow"
           }
         ],
