@@ -11,6 +11,19 @@
         "properties": {
           "value": "",
           "scope": "local",
+          "name": "results",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
           "name": "temp-remaining",
           "type": "datatype.string",
           "is_required": false,
@@ -30,19 +43,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01X7TIXVZC9N47QkrmyctCqMSY7cpRK27R8",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "results",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV",
         "object_type": "variable_workflow"
       }
     ],
@@ -477,14 +477,14 @@
             "object_type": "definition_activity"
           },
           {
-            "unique_name": "definition_activity_01Y5JOICUAVMR7ciXxbjQH7BYlEz0l1PPIO",
-            "name": "Threat Response - Observe Observables (list of observables)",
-            "title": "Threat Response - Observe Observables (list of observables)",
+            "unique_name": "definition_activity_01YMMG6AITKGR2Dr0vHwkYlJjLU6RJckr3L",
+            "name": "Threat Response - Observe Observables",
+            "title": "Threat Response - Observe Observables",
             "type": "workflow.sub_workflow",
             "base_type": "subworkflow",
             "properties": {
               "continue_on_failure": false,
-              "display_name": "Threat Response - Observe Observables (list of observables)",
+              "display_name": "Threat Response - Observe Observables",
               "input": {
                 "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX": "$activity.definition_activity_01X7UG1OGGSLR1PurHoawtdyAAc8OMmpH5h.output.script_queries.observablesJson$"
               },
@@ -496,7 +496,7 @@
                 "no_target": true
               },
               "workflow_id": "definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM",
-              "workflow_name": "Threat Response - Observe Observables (list of observables)"
+              "workflow_name": "Threat Response - Observe Observables"
             },
             "object_type": "definition_activity"
           },
@@ -513,7 +513,7 @@
               "variables_to_update": [
                 {
                   "variable_to_update": "$workflow.definition_workflow_01X72M63KSZR04Egw466CIkTijC0rSKvM01.local.variable_workflow_01YI8JRHWKM1B5c2y4bFSJqicr6k7aVR3pV$",
-                  "variable_value_new": "$activity.definition_activity_01Y5JOICUAVMR7ciXxbjQH7BYlEz0l1PPIO.output.variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx$"
+                  "variable_value_new": "$activity.definition_activity_01YMMG6AITKGR2Dr0vHwkYlJjLU6RJckr3L.output.variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx$"
                 }
               ]
             },
@@ -865,19 +865,6 @@
             "schema_id": "datatype.string",
             "properties": {
               "value": "",
-              "scope": "output",
-              "name": "dns-remaining",
-              "type": "datatype.string",
-              "is_required": false,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01X7T4XH23SJS2afp7fE9aaD8nXccU32dph",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
               "scope": "input",
               "name": "session-id",
               "type": "datatype.string",
@@ -885,6 +872,19 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01X7TEJB0DY4X2SUQc4VWXUQMhOTsUceupm",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "dns-remaining",
+              "type": "datatype.string",
+              "is_required": false,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01X7T4XH23SJS2afp7fE9aaD8nXccU32dph",
             "object_type": "variable_workflow"
           }
         ],
@@ -982,37 +982,11 @@
     {
       "workflow": {
         "unique_name": "definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM",
-        "name": "Threat Response - Observe Observables (list of observables)",
-        "title": "Threat Response - Observe Observables (list of observables)",
+        "name": "Threat Response - Observe Observables",
+        "title": "Threat Response - Observe Observables",
         "type": "generic.workflow",
         "base_type": "workflow",
         "variables": [
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
-              "scope": "output",
-              "name": "results",
-              "type": "datatype.string",
-              "is_required": false,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "[]",
-              "scope": "local",
-              "name": "sightings",
-              "type": "datatype.string",
-              "is_required": false,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT",
-            "object_type": "variable_workflow"
-          },
           {
             "schema_id": "datatype.integer",
             "properties": {
@@ -1029,14 +1003,14 @@
           {
             "schema_id": "datatype.string",
             "properties": {
-              "value": "",
-              "scope": "input",
-              "name": "observables",
+              "value": "[]",
+              "scope": "local",
+              "name": "sightings",
               "type": "datatype.string",
-              "is_required": true,
+              "is_required": false,
               "is_invisible": false
             },
-            "unique_name": "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX",
+            "unique_name": "variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT",
             "object_type": "variable_workflow"
           },
           {
@@ -1051,6 +1025,32 @@
             },
             "unique_name": "variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW",
             "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "input",
+              "name": "observables",
+              "type": "datatype.string",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.string",
+            "properties": {
+              "value": "",
+              "scope": "output",
+              "name": "results",
+              "type": "datatype.string",
+              "is_required": false,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
+            "object_type": "variable_workflow"
           }
         ],
         "properties": {
@@ -1059,7 +1059,7 @@
           },
           "delete_workflow_instance": false,
           "description": "Gets sightings, targets, relationship information. Investigates.\nInput must be in observable format:\n[{\n\"value\":\"example.com\",\n\"type\":\"url\"\n}]",
-          "display_name": "Threat Response - Observe Observables (list of observables)",
+          "display_name": "Threat Response - Observe Observables",
           "runtime_user": {
             "target_default": true
           },
