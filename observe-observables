@@ -1,24 +1,11 @@
 {
   "workflow": {
-    "unique_name": "definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM",
-    "name": "Threat Response - Observe Observables (list of observables)",
-    "title": "Threat Response - Observe Observables (list of observables)",
+    "unique_name": "definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg",
+    "name": "Updated -Threat Response - Observe Observables",
+    "title": "Updated -Threat Response - Observe Observables",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "output",
-          "name": "results",
-          "type": "datatype.string",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx",
-        "object_type": "variable_workflow"
-      },
       {
         "schema_id": "datatype.secure_string",
         "properties": {
@@ -29,7 +16,20 @@
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW",
+        "unique_name": "variable_workflow_01Z729SJ7DNI23JmZw6GR2ZiKoCjALFazNu",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "results",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01Z729SJ7DACM3QkxUytnOPWsYCmJQgLrjK",
         "object_type": "variable_workflow"
       },
       {
@@ -42,7 +42,7 @@
           "is_required": true,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX",
+        "unique_name": "variable_workflow_01Z729SJ7D25U0f9cZYEcFupy3okJbLJc3a",
         "object_type": "variable_workflow"
       },
       {
@@ -55,7 +55,7 @@
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT",
+        "unique_name": "variable_workflow_01Z729SJ7CQXM6tN163CHPiu4zQZ7G17Rla",
         "object_type": "variable_workflow"
       },
       {
@@ -68,7 +68,7 @@
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV",
+        "unique_name": "variable_workflow_01Z729SJ7DGXB20CnIsB1XzYtdYHWHHEguL",
         "object_type": "variable_workflow"
       }
     ],
@@ -78,7 +78,7 @@
       },
       "delete_workflow_instance": false,
       "description": "Gets sightings, targets, relationship information. Investigates.\nInput must be in observable format:\n[{\n\"value\":\"example.com\",\n\"type\":\"url\"\n}]",
-      "display_name": "Threat Response - Observe Observables (list of observables)",
+      "display_name": "Updated -Threat Response - Observe Observables",
       "runtime_user": {
         "target_default": true
       },
@@ -89,7 +89,7 @@
     "object_type": "definition_workflow",
     "actions": [
       {
-        "unique_name": "definition_activity_01XTRMM8JH60U0c06c6W2LoN7a5ZXVKj4O2",
+        "unique_name": "definition_activity_01Z729SKE548V7XKlUYY37pQazAwDzVKYuR",
         "name": "Execute Python Script",
         "title": "Initialize variables",
         "type": "python3.script",
@@ -98,7 +98,7 @@
           "action_timeout": 180,
           "continue_on_failure": false,
           "display_name": "Initialize variables",
-          "script": "import math,json\n\ntam = len($workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.input.variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX$)\ntotal = math.ceil(tam/50)",
+          "script": "import math,json\n\ntam = len($workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.input.variable_workflow_01Z729SJ7D25U0f9cZYEcFupy3okJbLJc3a$)\ntotal = math.ceil(tam/50)",
           "script_queries": [
             {
               "script_query": "total",
@@ -111,7 +111,7 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01XTRZMN5C9KK7Kyb3lJoCiKpcC850XAAdM",
+        "unique_name": "definition_activity_01Z729SL8SGHB7PS7cD7bm0l33kQ7Fquc0L",
         "name": "Threat Response - Generate Access Token",
         "title": "Threat Response - Generate Access Token",
         "type": "workflow.atomic_workflow",
@@ -134,7 +134,7 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01XTS3QII1D6P3t80hWu146eCjMi838REuY",
+        "unique_name": "definition_activity_01Z729SLRTD0J2mbY4cNsZySq0yxxMstJTg",
         "name": "Set Variables",
         "title": "Save Authorization Token Locally",
         "type": "core.set_multiple_variables",
@@ -145,15 +145,15 @@
           "skip_execution": false,
           "variables_to_update": [
             {
-              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW$",
-              "variable_value_new": "$activity.definition_activity_01XTRZMN5C9KK7Kyb3lJoCiKpcC850XAAdM.output.variable_workflow_01PP75S3G7CJY6WAQr2IJC7qga2SIoE09gQ$"
+              "variable_to_update": "$workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7DNI23JmZw6GR2ZiKoCjALFazNu$",
+              "variable_value_new": "$activity.definition_activity_01Z729SL8SGHB7PS7cD7bm0l33kQ7Fquc0L.output.variable_workflow_01PP75S3G7CJY6WAQr2IJC7qga2SIoE09gQ$"
             }
           ]
         },
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01XTRN4I7NCHW3TPiyyjPAh9Jk2L5TdRHXl",
+        "unique_name": "definition_activity_01Z729SMCYEEG1fjFOg59JX1N8h9rSfgNKx",
         "name": "While Loop",
         "title": "While there is still observables to analyse",
         "type": "logic.while",
@@ -166,16 +166,16 @@
         "object_type": "definition_activity",
         "blocks": [
           {
-            "unique_name": "definition_activity_01XTRN4IE4MMQ3j0fIcDUJPtx3HKXFBvNdo",
+            "unique_name": "definition_activity_01Z729SMT0GKH0SfAoqy36dEB30sXrwtTp0",
             "name": "Condition Branch",
             "title": "are domains left to observe?",
             "type": "logic.condition_block",
             "base_type": "activity",
             "properties": {
               "condition": {
-                "left_operand": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$",
+                "left_operand": "$workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7DGXB20CnIsB1XzYtdYHWHHEguL$",
                 "operator": "lt",
-                "right_operand": "$activity.definition_activity_01XTRMM8JH60U0c06c6W2LoN7a5ZXVKj4O2.output.script_queries.total$"
+                "right_operand": "$activity.definition_activity_01Z729SKE548V7XKlUYY37pQazAwDzVKYuR.output.script_queries.total$"
               },
               "continue_on_failure": false,
               "display_name": "are domains left to observe?",
@@ -184,7 +184,7 @@
             "object_type": "definition_activity",
             "actions": [
               {
-                "unique_name": "definition_activity_01XTRNMH729442FO1YxkpUHhHOaRqYCgAa1",
+                "unique_name": "definition_activity_01Z729SND9HI90ofQOtZdh8uq4qQgQRz5FG",
                 "name": "Execute Python Script",
                 "title": "Divide in chunks of 50 elements",
                 "type": "python3.script",
@@ -194,7 +194,7 @@
                   "continue_on_failure": false,
                   "description": "the /observe works better with up to 50 observables",
                   "display_name": "Divide in chunks of 50 elements",
-                  "script": "import json\n\ntemp = $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.input.variable_workflow_01XTRPD7XJ9053ME3ZM7SgTXQ4QclehDsdX$\ni = $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$\ntotal = $activity.definition_activity_01XTRMM8JH60U0c06c6W2LoN7a5ZXVKj4O2.output.script_queries.total$\n\nif i == total-1:\n  current1 = temp[50*i:]\nelse:\n  current1 = temp[50*i:50*(i+1)]\n\ncurrent = json.dumps(current1)\nprint(len(current))",
+                  "script": "import json\n\ntemp = $workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.input.variable_workflow_01Z729SJ7D25U0f9cZYEcFupy3okJbLJc3a$\ni = $workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7DGXB20CnIsB1XzYtdYHWHHEguL$\ntotal = $activity.definition_activity_01Z729SKE548V7XKlUYY37pQazAwDzVKYuR.output.script_queries.total$\n\nif i == total-1:\n  current1 = temp[50*i:]\nelse:\n  current1 = temp[50*i:50*(i+1)]\n\ncurrent = json.dumps(current1)\nprint(len(current))",
                   "script_queries": [
                     {
                       "script_query": "current",
@@ -207,24 +207,24 @@
                 "object_type": "definition_activity"
               },
               {
-                "unique_name": "definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w",
+                "unique_name": "definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz",
                 "name": "HTTP Request",
                 "title": "Observe Observables",
                 "type": "web-service.http_request",
                 "base_type": "activity",
                 "properties": {
                   "accept": "application/json",
-                  "action_timeout": 180,
+                  "action_timeout": 540,
                   "allow_auto_redirect": true,
                   "allow_headers_redirect": false,
-                  "body": "$activity.definition_activity_01XTRNMH729442FO1YxkpUHhHOaRqYCgAa1.output.script_queries.current$",
+                  "body": "$activity.definition_activity_01Z729SND9HI90ofQOtZdh8uq4qQgQRz5FG.output.script_queries.current$",
                   "content_type": "application/json",
                   "continue_on_error_status_code": false,
                   "continue_on_failure": true,
                   "custom_headers": [
                     {
                       "name": "Authorization",
-                      "value": "Bearer $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW$"
+                      "value": "Bearer $workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7DNI23JmZw6GR2ZiKoCjALFazNu$"
                     }
                   ],
                   "description": "POST to Observe the chunk of observables",
@@ -243,7 +243,7 @@
                 "object_type": "definition_activity"
               },
               {
-                "unique_name": "definition_activity_01XTS62C4MB923Pv1lfjQldlry4ScMNRVdU",
+                "unique_name": "definition_activity_01Z729SONBF951nefo1ZDM7iECFlV2U8aZX",
                 "name": "Condition Block",
                 "title": "Was it successfull?",
                 "type": "logic.if_else",
@@ -256,14 +256,14 @@
                 "object_type": "definition_activity",
                 "blocks": [
                   {
-                    "unique_name": "definition_activity_01XTS62CAUOAU06L1C1KpA0CT9NingQofXu",
+                    "unique_name": "definition_activity_01Z729SP00AEN2We6QHaDSlvCW9P4uMRbcl",
                     "name": "Condition Branch",
                     "title": "Successful",
                     "type": "logic.condition_block",
                     "base_type": "activity",
                     "properties": {
                       "condition": {
-                        "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                        "left_operand": "$activity.definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz.output.status_code$",
                         "operator": "eq",
                         "right_operand": 200
                       },
@@ -274,16 +274,16 @@
                     "object_type": "definition_activity",
                     "actions": [
                       {
-                        "unique_name": "definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD",
+                        "unique_name": "definition_activity_01Z729SPKQ78L4Hs6qA7xqRUwFOjzUUqMy0",
                         "name": "JSONPath Query",
-                        "title": "JSONPath Query",
+                        "title": "Get targets if any",
                         "type": "corejava.jsonpathquery",
                         "base_type": "activity",
                         "properties": {
                           "action_timeout": 180,
                           "continue_on_failure": true,
-                          "display_name": "JSONPath Query",
-                          "input_json": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.response_body$",
+                          "display_name": "Get targets if any",
+                          "input_json": "$activity.definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz.output.response_body$",
                           "jsonpath_queries": [
                             {
                               "jsonpath_query": "$.data[*].data.sightings.docs[*].[?(@.targets)].targets",
@@ -299,6 +299,11 @@
                               "jsonpath_query": "$.data[*].data.sightings.docs[*].[?(@.targets)].source",
                               "jsonpath_query_name": "source",
                               "jsonpath_query_type": "string"
+                            },
+                            {
+                              "jsonpath_query": "$.data[*].data.sightings.docs[*].[?(@.targets)].observed_time",
+                              "jsonpath_query_name": "observed_time",
+                              "jsonpath_query_type": "string"
                             }
                           ],
                           "skip_execution": false
@@ -306,7 +311,7 @@
                         "object_type": "definition_activity"
                       },
                       {
-                        "unique_name": "definition_activity_01Y4Q5RSQAZS74mqH4tNG8e8lAzDdufTEGx",
+                        "unique_name": "definition_activity_01Z729SQ0OG697mhj68vSM3v5UO1czf5TvZ",
                         "name": "Condition Block",
                         "title": "Are there any targets in this chunk?",
                         "type": "logic.if_else",
@@ -319,14 +324,14 @@
                         "object_type": "definition_activity",
                         "blocks": [
                           {
-                            "unique_name": "definition_activity_01Y4Q5RT3Q1QW4Jd36szNAhQuuRIKi8OWKR",
+                            "unique_name": "definition_activity_01Z729SQEJ4ER3Fyzc93TXpCdWiDReV5TJP",
                             "name": "Condition Branch",
                             "title": "Yes",
                             "type": "logic.condition_block",
                             "base_type": "activity",
                             "properties": {
                               "condition": {
-                                "left_operand": "$activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.error.code$",
+                                "left_operand": "$activity.definition_activity_01Z729SPKQ78L4Hs6qA7xqRUwFOjzUUqMy0.output.error.code$",
                                 "operator": "ne",
                                 "right_operand": "400"
                               },
@@ -337,7 +342,7 @@
                             "object_type": "definition_activity",
                             "actions": [
                               {
-                                "unique_name": "definition_activity_01Y4QCSMC5Q5W4oOiOaCy6beB8sK11sqfKf",
+                                "unique_name": "definition_activity_01Z729SR0F4Z22fLeIV3lviDiy00U64Fj2i",
                                 "name": "Execute Python Script",
                                 "title": "Set Variable Sigthings",
                                 "type": "python3.script",
@@ -347,7 +352,7 @@
                                   "continue_on_failure": false,
                                   "description": "Need to remove duplicates",
                                   "display_name": "Set Variable Sigthings",
-                                  "script": "import json\n\nobs = $activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.jsonpath_queries.observables$\ntargs = $activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.jsonpath_queries.targets$\nsrcs = $activity.definition_activity_01XTSDMYB3EAU7TqGxGZuMvONZRNiv8KuWD.output.jsonpath_queries.source$\nsights = $workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT$\nfor i in range(0,len(obs)):\n  nc = {'observables': obs[i],'source': srcs[i],'targets': targs[i]}\n  sights.append(nc)\n",
+                                  "script": "import json\n\nobs = $activity.definition_activity_01Z729SPKQ78L4Hs6qA7xqRUwFOjzUUqMy0.output.jsonpath_queries.observables$\ntargs = $activity.definition_activity_01Z729SPKQ78L4Hs6qA7xqRUwFOjzUUqMy0.output.jsonpath_queries.targets$\nsrcs = $activity.definition_activity_01Z729SPKQ78L4Hs6qA7xqRUwFOjzUUqMy0.output.jsonpath_queries.source$\nsights = $workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7CQXM6tN163CHPiu4zQZ7G17Rla$\nfor i in range(0,len(obs)):\n  nc = {'observables': obs[i],'source': srcs[i],'targets': targs[i]}\n  sights.append(nc)\n",
                                   "script_queries": [
                                     {
                                       "script_query": "sights",
@@ -360,7 +365,7 @@
                                 "object_type": "definition_activity"
                               },
                               {
-                                "unique_name": "definition_activity_01XTWUMQWOSYO0vrrxScUBG99jyPz7gZraZ",
+                                "unique_name": "definition_activity_01Z729SRHP6F72AMGddIol0olclGw4YYy2N",
                                 "name": "Set Variables",
                                 "title": "Set Variables",
                                 "type": "core.set_multiple_variables",
@@ -371,8 +376,8 @@
                                   "skip_execution": false,
                                   "variables_to_update": [
                                     {
-                                      "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT$",
-                                      "variable_value_new": "$activity.definition_activity_01Y4QCSMC5Q5W4oOiOaCy6beB8sK11sqfKf.output.script_queries.sights$"
+                                      "variable_to_update": "$workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7CQXM6tN163CHPiu4zQZ7G17Rla$",
+                                      "variable_value_new": "$activity.definition_activity_01Z729SR0F4Z22fLeIV3lviDiy00U64Fj2i.output.script_queries.sights$"
                                     }
                                   ]
                                 },
@@ -383,7 +388,7 @@
                         ]
                       },
                       {
-                        "unique_name": "definition_activity_01XTRW047LD6F0SrPUNvRLjFMN9OhIvk5h3",
+                        "unique_name": "definition_activity_01Z729SS0KM4H0pTTHZINkJqpw68bQg02XW",
                         "name": "Set Variables",
                         "title": "Increase i",
                         "type": "core.set_multiple_variables",
@@ -394,8 +399,8 @@
                           "skip_execution": false,
                           "variables_to_update": [
                             {
-                              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$",
-                              "variable_value_new": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTRQ1P0GV1P1ZIYlEfrHcyGwpa9LqeHuV$+1"
+                              "variable_to_update": "$workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7DGXB20CnIsB1XzYtdYHWHHEguL$",
+                              "variable_value_new": "$workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7DGXB20CnIsB1XzYtdYHWHHEguL$+1"
                             }
                           ]
                         },
@@ -404,14 +409,14 @@
                     ]
                   },
                   {
-                    "unique_name": "definition_activity_01XTS62CGA6BW57aDoTRlEIj5WA1dHw4gJm",
+                    "unique_name": "definition_activity_01Z729SSGODTL0AU2O7udm0sCmAW6yAGGYs",
                     "name": "Condition Branch",
                     "title": "Token expired",
                     "type": "logic.condition_block",
                     "base_type": "activity",
                     "properties": {
                       "condition": {
-                        "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                        "left_operand": "$activity.definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz.output.status_code$",
                         "operator": "eq",
                         "right_operand": 401
                       },
@@ -422,7 +427,7 @@
                     "object_type": "definition_activity",
                     "actions": [
                       {
-                        "unique_name": "definition_activity_01XTX4HMFF0FB3w6vaWocltouf6EFJje9Eu",
+                        "unique_name": "definition_activity_01Z729STCU7O93FtPXhZUfD3CTj49PO3vyg",
                         "name": "Threat Response - Generate Access Token again",
                         "title": "Threat Response - Generate Access Token again",
                         "type": "workflow.atomic_workflow",
@@ -445,7 +450,7 @@
                         "object_type": "definition_activity"
                       },
                       {
-                        "unique_name": "definition_activity_01XTX4TS64TVC086ygPyiaLTpu40QiB1NGE",
+                        "unique_name": "definition_activity_01Z729STX7TWX330Nd9iIuCIqsB5zJpsU0X",
                         "name": "Set Variables",
                         "title": "Save Authorization Token Locally",
                         "type": "core.set_multiple_variables",
@@ -457,8 +462,8 @@
                           "skip_execution": false,
                           "variables_to_update": [
                             {
-                              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTS4EAMGDHJ3VFYNcJNwzDpSFQTBKfnhW$",
-                              "variable_value_new": "$activity.definition_activity_01XTX4HMFF0FB3w6vaWocltouf6EFJje9Eu.output.variable_workflow_01PP75S3G7CJY6WAQr2IJC7qga2SIoE09gQ$"
+                              "variable_to_update": "$workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7DNI23JmZw6GR2ZiKoCjALFazNu$",
+                              "variable_value_new": "$activity.definition_activity_01Z729STCU7O93FtPXhZUfD3CTj49PO3vyg.output.variable_workflow_01PP75S3G7CJY6WAQr2IJC7qga2SIoE09gQ$"
                             }
                           ]
                         },
@@ -467,7 +472,7 @@
                     ]
                   },
                   {
-                    "unique_name": "definition_activity_01XTS7FOBKRGJ41zfGs8RrLnHwLrlJvudge",
+                    "unique_name": "definition_activity_01Z729SUI6GA05VYYD0POAAAjpdyy11jrlF",
                     "name": "Condition Branch",
                     "title": "Anything else",
                     "type": "logic.condition_block",
@@ -475,13 +480,13 @@
                     "properties": {
                       "condition": {
                         "left_operand": {
-                          "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                          "left_operand": "$activity.definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz.output.status_code$",
                           "operator": "ne",
                           "right_operand": 401
                         },
                         "operator": "or",
                         "right_operand": {
-                          "left_operand": "$activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.status_code$",
+                          "left_operand": "$activity.definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz.output.status_code$",
                           "operator": "ne",
                           "right_operand": 200
                         }
@@ -493,7 +498,7 @@
                     "object_type": "definition_activity",
                     "actions": [
                       {
-                        "unique_name": "definition_activity_01XTX5PX4S7O876hLhzBrEgyBD1JLHsf6o3",
+                        "unique_name": "definition_activity_01Z729SV7DE0X47WaerYtITHpAy85qwOVVa",
                         "name": "Completed",
                         "title": "Failed",
                         "type": "logic.completed",
@@ -502,7 +507,7 @@
                           "completion_type": "failed-completed",
                           "continue_on_failure": false,
                           "display_name": "Failed",
-                          "result_message": "We could not complete the web request for this observables. Error: $activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.error.code$ -  $activity.definition_activity_01XTRZWIP01Q94CFMgido3z1LwGUebZCZ1w.output.error.message$",
+                          "result_message": "We could not complete the web request for this observables. Error: $activity.definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz.output.error.code$ -  $activity.definition_activity_01Z729SNX412W0VQNE6V8d7fDrkABWfe6Jz.output.error.message$",
                           "skip_execution": false
                         },
                         "object_type": "definition_activity"
@@ -516,7 +521,29 @@
         ]
       },
       {
-        "unique_name": "definition_activity_01YI81BIB3A8I6lfoxmHLCmPWOzH0e7VeMr",
+        "unique_name": "definition_activity_01ZBMAG045MP40Wmcb7MXXh3hNRqXMXXDYl",
+        "name": "Execute Python Script",
+        "title": "Execute Python Script",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Execute Python Script",
+          "script": "import json\n\ntemp = $workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.local.variable_workflow_01Z729SJ7CQXM6tN163CHPiu4zQZ7G17Rla$\n\nprint(type(temp))\n\nres = json.dumps(temp)\nprint(type(res))\nprint(res)",
+          "script_queries": [
+            {
+              "script_query": "res",
+              "script_query_name": "res",
+              "script_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01Z729SVNN0J51SKJNkEQsst4rPLrtgpQHL",
         "name": "Set Variables",
         "title": "Set final results",
         "type": "core.set_multiple_variables",
@@ -527,8 +554,8 @@
           "skip_execution": false,
           "variables_to_update": [
             {
-              "variable_to_update": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.output.variable_workflow_01YI81NQILMN60ya64AhCOQb0WjqVYDj7Wx$",
-              "variable_value_new": "$workflow.definition_workflow_01XTRL8TZ008S32oITktaqgtxst2YVuBxRM.local.variable_workflow_01XTWUJSDT73R2UvqXBfYeHjQCyfWTGAfFT$"
+              "variable_to_update": "$workflow.definition_workflow_01Z729SITTMHN5i7KyB5TWyL5x34W5AAHhg.output.variable_workflow_01Z729SJ7DACM3QkxUytnOPWsYCmJQgLrjK$",
+              "variable_value_new": "$activity.definition_activity_01ZBMAG045MP40Wmcb7MXXh3hNRqXMXXDYl.output.script_queries.res$"
             }
           ]
         },
